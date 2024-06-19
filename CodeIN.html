@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeIN-The Free HTML,CSS,JavaScript Code Editor</title>
+    <link rel="shortcut icon" type="x-icon" href="icons8-code-20.png">
+    <link rel="stylesheet" href="CodeIN.css">
+    <script src="https://kit.fontawesome.com/21141aa4d2.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="head">CodeIN</div>
+    <div class="container">
+        <div class="left">
+            <!-- for html code -->
+            <label><i class="fa-brands fa-html5"></i> HTML</label>
+            <textarea id="html-code" onkeyup="run()"></textarea>
+            <!-- for css code -->
+            <label><i class="fa-brands fa-css3-alt"></i> CSS</label>
+            <textarea id="css-code" onkeyup="run()"></textarea>
+            <!-- for js code -->
+            <label><i class="fa-brands fa-square-js"></i> JavaScript</label>
+            <textarea id="js-code" onkeyup="run()"></textarea>
+        </div>
+        <div class="right">
+            <label><i class="fa-solid fa-play"></i> Output</label>
+            <iframe id="output"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function run() {
+            let htmlCode = document.getElementById("html-code").value;
+            let cssCode = document.getElementById("css-code").value;
+            let jsCode = document.getElementById("js-code").value;
+            let output = document.getElementById("output");
+
+            //to display html and css
+            output.contentDocument.body.innerHTML = htmlCode + "<style>" + cssCode + "</style>";
+            //to display js
+            output.contentWindow.eval(jsCode);
+
+        }
+    </script>
+</body>
+
+</html>
